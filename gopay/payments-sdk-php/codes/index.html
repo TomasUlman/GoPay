@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <title>GoPay</title>
+</head>
+
+<body>
+    <!-- Logo GoPay -->
+    <img src="/images/logo.png" alt="logo" class="logo">
+
+    <main>
+        <!-- Tlačítko nastavení (credentials/test mode) -->
+        <div class="settings-btn"></div>
+
+        <!-- Stav platby -->
+        <div class="status-modal hidden">
+            <button class="close-status-btn">&times;</button>
+            <p id="status-message"></p>
+        </div>
+
+        <!-- Error message -->
+        <div class="error-modal hidden">
+            <button class="close-error-btn">&times;</button>
+            <p id="error-message"></p>
+        </div>
+
+        <!-- Validace credentials  -->
+        <div class="validation-modal hidden">
+            <button class="close-validation-btn">&times;</button>
+            <p>CREDENTIALS JSOU PLATNÉ</p>
+        </div>
+
+        <div class="container-border"></div>
+        <div class="container">
+
+            <!-- Formulář -->
+            <form action="#" method="post" id="payment-form">
+                <!-- Nastavení (credentials/test mode)  -->
+                <div class="settings-modal hidden">
+                    <div class="settings-group">
+                        <button class="close-settings-btn">&times;</button>
+                        <label for="goid">GoID</label>
+                        <input type="number" class="input mb-5" name="goid" id="goid" value="8138705157">
+                        <label for="clientsecret">ClientSecret</label>
+                        <input type="text" class="input mb-5" name="clientsecret" id="clientsecret" value="wJPdBzYB">
+                        <label for="clientid">ClientID</label>
+                        <input type="text" class="input mb-5" name="clientid" id="clientid" value="1564918465">
+                        <div class="test-mode">
+                            <label for="test-mode-checkbox">Testovací režim</label>
+                            <input type="checkbox" class="test-mode-checkbox" checked>
+                            <input type="text" class="hidden" value="https://gw.sandbox.gopay.com/api" id="url"
+                                name="url">
+                        </div>
+                        <button class="btn btn-submit" id="payment-instruments-all">
+                            🔎 Ověřit</button>
+                        <div>
+                            <button class="btn" id="my-test-credentials">Test credentials</button>
+                            <button class="btn" id="techsupport-credentials">TechSupport</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay hidden"></div>
+
+                <!-- Zaplatit container (částka, zaplatit btn, měna, autorizace, opakování) -->
+                <div class="payment-container">
+                    <input type="number" class="input amount-input" name="amount" placeholder="Částka">
+                    <select class="select" name="currency">
+                        <option value="CZK">CZK</option>
+                        <option value="EUR">EUR</option>
+                        <option value="PLN">PLN</option>
+                        <option value="USD">USD</option>
+                        <option value="GBP">GBP</option>
+                        <option value="HUF">HUF</option>
+                        <option value="RON">RON</option>
+                        <option value="BGN">BGN</option>
+                    </select>
+                    <button class="btn btn-submit" id="create-payment">💲 Zaplatit</button>
+                    <div class="checkbox-container">
+                        <label>
+                            <input type="checkbox" name="preauthorization"> Předautorizace
+                        </label>
+                        <label>
+                            <input type="checkbox" name="recurrence" id="recurrence-checkbox"> Opakovaná platba
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Data opakované platby -->
+                <div class="recurrence-container">
+                    <input name="period" type="number" class="input" id="period" value="1" style="max-width: 40px;"
+                        disabled>
+                    <label for="cycle" class="multiplication-symbol">X</label>
+                    <select name="cycle" class="select" id="cycle" disabled>
+                        <option value="MONTH">Měsíčně</option>
+                        <option value="WEEK">Týdně</option>
+                        <option value="DAY">Denně</option>
+                        <option value="ON_DEMAND">Na vyžádání</option>
+                    </select>
+                    <label for="date">Do:</label>
+                    <input type="date" id="date" name="date_to" class="input" value="2025-09-01" disabled>
+                </div>
+
+                <!-- ID platby  -->
+                <div>
+                    <input type="text" class="input amount-input" name="paymentID" id="paymentID-input"
+                        placeholder="ID platby">
+                </div>
+
+                <!-- Tlačítka -->
+                <ul class="btns-container">
+                    <li>
+                        <button class="btn btn-submit" id="refund-payment">🔙 Refundace</button>
+                        <button class="btn btn-submit" id="status">❔ Stav platby</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-submit" id="capture-recurrence">
+                            💲 Strhnout opakovanou platbu</button>
+                        <button class=" btn btn-submit" id="cancel-recurrence">
+                            ❌ Zrušit opakovanou platbu</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-submit" id="capture-preauthorized">
+                            💲 Strhnout předautorizovanou platbu</button>
+                        <button class="btn btn-submit" id="cancel-preauthorized">
+                            ❌ Zrušit předautorizovanou platbu</button>
+                    </li>
+                </ul>
+
+            </form>
+        </div>
+
+    </main>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
