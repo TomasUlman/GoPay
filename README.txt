@@ -7,7 +7,7 @@ Funkcionality:
 Vytvoření platby, Opakovaná platba, Předautorizovaná platba, Dotaz na stav platby, Refundace, Stržení opakované platby, Stržení předautorizované platby, Zrušení opakované platby, Zrušení předautorizované platby, Nastavení (ikona ozubeného kolečka): Otevře okno pro zadání credentials, přepnutí mezi testovacím a produkčním prostředím a validaci credentials.
 
 Spuštění projektu: 
-Projekt lze spustit souborem RUN.bat (gopay\payments-sdk-php\codes), který nejprve spustí php na localhost serveru port: 8000 (je tedy třeba doplnit v něm správnou cestu k souboru php.exe), poté otevře projekt v Google Chrome. Případně lze spustit jiným způsobem na localhostu.
+Projekt lze spustit souborem RUN.bat v adresáři codes, který nejprve spustí php na localhost serveru port: 8000 (je tedy třeba doplnit v něm správnou cestu k souboru php.exe), poté otevře projekt v Google Chrome. Případně lze spustit jiným způsobem na localhostu.
 
 Interakce s formulářem: 
 Klikněte na tlačítko ve formuláři podle požadované operace (vytvoření platby, refundace, atd.). Podle id tlačítka se odešle formulář a vyvolá příslušný PHP skript.
@@ -16,4 +16,4 @@ Přesměrování:
 Po přesměrování bude odpověď API předána v URL parametru. Parametry budou zpracovány a zobrazena podstatná data.
 
 Zdrojové kódy:
-Zdrojové kódy se nacházejí v adresáři: gopay\payments-sdk-php\codes. 
+Zdrojové kódy se nacházejí v adresáři codes. 

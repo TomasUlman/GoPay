@@ -1,16 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../../../autoload.php';
-
-use GoPay\Definition\Language;
-
-$gopay = GoPay\payments([
-    'goid' => $_POST['goid'],
-    'clientId' => $_POST['clientid'],
-    'clientSecret' => $_POST['clientsecret'],
-    'gatewayUrl' => $_POST['url'],
-    'language' => Language::CZECH
-]);
+require_once __DIR__ . '/init-gopay.php';
 
 $preauthorization = isset($_POST['preauthorization']) && $_POST['preauthorization'] == 'on';
 $recurrence = null;
@@ -39,7 +29,6 @@ $response = $gopay->createPayment([
     ],
     'preauthorization' => $preauthorization,
     'recurrence' => $recurrence,
-    'lang' => Language::CZECH,
 ]);
 
 if ($response->hasSucceed()) {

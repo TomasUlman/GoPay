@@ -1,16 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../../../autoload.php';
-
-use GoPay\Definition\Language;
-
-$gopay = GoPay\payments([
-    'goid' => $_POST['goid'],
-    'clientId' => $_POST['clientid'],
-    'clientSecret' => $_POST['clientsecret'],
-    'gatewayUrl' => $_POST['url'],
-    'language' => Language::CZECH
-]);
+require_once __DIR__ . '/init-gopay.php';
 
 $response = $gopay->getPaymentInstrumentsALL($_POST['goid']);
 
