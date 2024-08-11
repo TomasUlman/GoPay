@@ -6,8 +6,8 @@ const settingsCloseBtn = document.querySelector('.close-settings-btn');
 const testmodeCheckbox = document.querySelector('.test-mode-checkbox');
 const credentialsBtns = [document.getElementById('my-test-credentials'), document.getElementById('techsupport-credentials')];
 const credentials = {
-    'my-test-credentials': ['8138705157', 'wJPdBzYB', '1564918465', true],
-    'techsupport-credentials': ['8165258244', 'vG4BxAtU', 'app@goshop.cz', false]
+    'my-test-credentials': ['GoID', 'ClientSecret', 'ClientID', true],
+    'techsupport-credentials': ['GoID', 'ClientSecret', 'ClientID', false]
 };
 const goidInput = document.getElementById('goid');
 const clientidInput = document.getElementById('clientid');
@@ -72,7 +72,7 @@ window.addEventListener('load', function () {
         errorMessage.textContent = urlParams.get('error');
         errorModal.classList.remove('hidden');
     }
-})
+});
 
 // Odeslání formuláře 
 paymentForm.addEventListener('click', function (e) {
@@ -90,7 +90,7 @@ paymentForm.addEventListener('click', function (e) {
 
         paymentForm.submit();
     }
-})
+});
 
 // Změna stavu checkboxu opakované platby a zobrazení / skrytí parametrů opakované platby
 recurrenceCheckbox.addEventListener('change', function () {
@@ -101,7 +101,7 @@ recurrenceCheckbox.addEventListener('change', function () {
         recurrenceContainer.style.opacity = 0;
         recurrenceContainer.querySelectorAll('*').forEach(element => element.disabled = true);
     }
-})
+});
 
 // Zavření settings modálu
 const closeSettings = function () {
@@ -113,8 +113,8 @@ const closeSettings = function () {
 settingsBtn.addEventListener('click', function () {
     settingsModal.classList.remove('hidden');
     overlay.classList.remove('hidden');
-})
-overlay.addEventListener('click', closeSettings)
+});
+overlay.addEventListener('click', closeSettings);
 
 // Zavření settings modálu escapem
 document.addEventListener('keydown', function (e) {
@@ -126,7 +126,7 @@ document.addEventListener('keydown', function (e) {
 const changeUrl = () => testmodeCheckbox.checked ?
     urlInput.value = 'https://gw.sandbox.gopay.com/api' : urlInput.value = 'https://gate.gopay.cz/api';
 
-testmodeCheckbox.addEventListener('change', changeUrl)
+testmodeCheckbox.addEventListener('change', changeUrl);
 
 // Doplnění credentials do příslušných polí z credentials mapy
 credentialsBtns.forEach(btn => {
@@ -144,7 +144,7 @@ credentialsBtns.forEach(btn => {
 settingsCloseBtn.addEventListener('click', function (e) {
     e.preventDefault();
     closeSettings();
-})
-statusCloseBtn.addEventListener('click', () => statusModal.classList.add('hidden'))
-errorCloseBtn.addEventListener('click', () => errorModal.classList.add('hidden'))
-validationCloseBtn.addEventListener('click', () => validationModal.classList.add('hidden'))
+});
+statusCloseBtn.addEventListener('click', () => statusModal.classList.add('hidden'));
+errorCloseBtn.addEventListener('click', () => errorModal.classList.add('hidden'));
+validationCloseBtn.addEventListener('click', () => validationModal.classList.add('hidden'));

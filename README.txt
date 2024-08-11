@@ -9,6 +9,12 @@ Vytvoření platby, Opakovaná platba, Předautorizovaná platba, Dotaz na stav 
 Spuštění projektu: 
 Projekt je třeba spustit na localhost serveru (např. ve VS code). Případně lze spustit souborem RUN.bat v adresáři GoPay-main/codes, který nejprve spustí php na localhost serveru port: 8000 (je tedy třeba doplnit v něm správnou cestu k souboru php.exe), poté otevře projekt v Google Chrome.
 
+Credentials: V souboru script.js doplňte testovací a produkční credentials. 
+const credentials = {
+    'my-test-credentials': ['GoID', 'ClientSecret', 'ClientID', true],
+    'techsupport-credentials': ['GoID', 'ClientSecret', 'ClientID', false]
+};
+
 Interakce s formulářem: 
 Klikněte na tlačítko ve formuláři podle požadované operace (vytvoření platby, refundace, atd.). Podle id tlačítka se odešle formulář a vyvolá příslušný PHP skript.
 
